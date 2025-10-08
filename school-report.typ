@@ -9,17 +9,14 @@
 
   body,
 ) = [
-  #set text(
-    font: font,
-  )
+  // Make the caption of a test-table to appear on top of the table.
+  #show figure.where(
+    kind: "test-table"
+  ): set figure.caption(position: top);
 
-  #set par(
-    justify: true,
-  )
-
-  #set page(
-    numbering: "1 of 1",
-  );
+  #set text(font: font)
+  #set par(justify: true)
+  #set page(numbering: "1 of 1");
 
   // Header that doesn't render on <noheader>
   #set page(header: context {
@@ -109,7 +106,3 @@
   )
 ];
 
-// Make the caption of a test-table to appear on top of the table.
-#show figure.where(
-  kind: "test-table"
-): set figure.caption(position: top);
