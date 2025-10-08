@@ -1,5 +1,5 @@
 #let report(
-  matriculation_id: 0,
+  matric: 0,
   tutor: "",
   deadline: "",
   module: "",
@@ -38,7 +38,7 @@
           columns: (1fr, 1fr, 1fr, 1fr),
 
           [ #module Assignment],
-          [ #matriculation_id ],
+          [ #matric ],
           [ Tutor: #tutor ],
           [ Date: #deadline],
         )
@@ -50,7 +50,7 @@
   #align(center)[
     #heading(outlined: false)[#module Report] \
     Tutor: #tutor \
-    Matriculation ID: #matriculation_id \
+    Matriculation ID: #matric \
     Date: #deadline
   ] <noheader>
 
