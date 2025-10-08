@@ -1,7 +1,7 @@
 #let report(
   matric: 0,
   tutor: "",
-  deadline: "",
+  date: "",
   module: "",
 
   font: "New Computer Modern",
@@ -37,7 +37,7 @@
       [ #module Assignment],
       [ #matric ],
       [ Tutor: #tutor ],
-      [ Date: #deadline],
+      [ Date: #date],
     )]]
   })
 
@@ -46,7 +46,7 @@
     #heading(outlined: false)[#module Report] \
     Tutor: #tutor \
     Matriculation ID: #matric \
-    Date: #deadline
+    Date: #date
   ] <noheader>
 
   #outline(title: "Table of Contents")
