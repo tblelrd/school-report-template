@@ -3,7 +3,10 @@
   tutor: "",
   deadline: "",
   module: "",
+
   font: "New Computer Modern",
+  header_size: 0.8em,
+
   body,
 ) = [
   #set text(
@@ -23,27 +26,19 @@
     // Finds the noheader tag
     let tags = query(selector(<noheader>).after(here()))
 
+    // Don't write header if noheader tag is anywhere on the page.
     for tag in tags {
       if tag.location().page() == here().page() { return; }
     }
-    // if tags.len() > 0 {
-    //   if tags.first().location().page() == here().page() { return }
-    // }
 
-    text(
-      size: 0.8em,
-    )[
-      #align(center)[
-        #grid(
-          columns: (1fr, 1fr, 1fr, 1fr),
+    text(size: header_size)[#align(center)[#grid(
+      columns: (1fr, 1fr, 1fr, 1fr),
 
-          [ #module Assignment],
-          [ #matric ],
-          [ Tutor: #tutor ],
-          [ Date: #deadline],
-        )
-      ]
-    ]
+      [ #module Assignment],
+      [ #matric ],
+      [ Tutor: #tutor ],
+      [ Date: #deadline],
+    )]]
   })
 
   // Title page
@@ -56,7 +51,6 @@
 
   #outline(title: "Table of Contents")
   #pagebreak();
-
 
   #body
 ];
