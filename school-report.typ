@@ -101,9 +101,9 @@
       [Expected Outcomes],
       [Pass / Fail?],
     ),
-    table.hline(stroke: 0.5pt),
+    table.hline(stroke: 0.3pt),
     ..tests.flatten(),
-    table.hline(stroke: 0.8pt),
+    table.hline(),
   )
 ];
 
