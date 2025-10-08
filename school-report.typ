@@ -92,6 +92,7 @@
   
   #table(
     stroke: none,
+    align: left,
     columns: 4,
     table.hline(),
     table.header(
