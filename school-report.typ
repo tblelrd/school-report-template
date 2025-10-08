@@ -54,3 +54,62 @@
 
   #body
 ];
+
+// Error message to string
+#let to-string(it) = {
+  if type(it) == str {
+    it
+  } else if type(it) != content {
+    str(it)
+  } else if it.has("text") {
+    it.text
+  } else if it.has("children") {
+    it.children.map(to-string).join()
+  } else if it.has("body") {
+    to-string(it.body)
+  } else if it == [ ] {
+    " "
+  }
+}
+
+// A test table that can be referenced.
+#let test-table(
+  title: none,
+  tests: (),
+) = figure(
+  kind: "test-table",
+  supplement: "Table",
+  numbering: "1",
+  caption: title,
+)[
+  #set par(justify: false);
+
+  // Check that tests are 4 wide always
+  #let valid = tests.all(row => row.len() == 4);
+  #for test in tests {
+    if test.len() != 4 {
+      panic(to-string([ERROR: Row #tests.position(t => t == test) has length #test.len(), should be 4]))
+    }
+  }
+  #if not(valid) { return [Table should always have 4 columns] }
+  
+  #table(
+    stroke: none,
+    columns: 4,
+    table.hline(),
+    table.header(
+      [What is being tested],
+      [Pre-conditions],
+      [Expected Outcomes],
+      [Pass / Fail?],
+    ),
+    table.hline(stroke: 0.5pt),
+    ..tests.flatten(),
+    table.hline(stroke: 0.8pt),
+  )
+];
+
+// Make the caption of a test-table to appear on top of the table.
+#show figure.where(
+  kind: "test-table"
+): set figure.caption(position: top);
