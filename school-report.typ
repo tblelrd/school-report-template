@@ -4,7 +4,7 @@
   date: "",
   module: "",
 
-  font: "New Computer Modern",
+  font: "Charter BT Roman, New Computer Modern",
   header_size: 0.8em,
 
   body,
