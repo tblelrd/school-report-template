@@ -107,3 +107,9 @@
   )
 ];
 
+// Another show rule for appendices.
+#let appendix(body) = {
+  set heading(numbering: "A", supplement: [Appendix])
+  counter(heading).update(0)
+  body
+}
