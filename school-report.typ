@@ -6,7 +6,6 @@
 
   font: "Charter BT Roman, New Computer Modern",
   header_size: 0.8em,
-  par_break: true,
 
   body,
 ) = [
@@ -18,26 +17,6 @@
   #set text(font: font)
   #set par(justify: true)
   #set page(numbering: "1 of 1");
-
-  // Don't split paragraph across pages
-  #if par_break {
-    show par: it => {
-      let fitting = state("fitting")
-      layout(size => {
-        let par-height = measure(width: size.width, it).height
-        fitting.update(par-height < size.height)
-      })
-      context {
-        assert(type(fitting.get()) == bool)
-        if fitting.get() {
-          block(breakable: false, it)
-        } else {
-          pagebreak()
-          it
-        }
-      }
-    }
-  }
 
   // Header that doesn't render on <noheader>
   #set page(header: context {
