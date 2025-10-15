@@ -108,8 +108,15 @@
 ];
 
 // Another show rule for appendices.
+// Can't do subheadings.
 #let appendix(body) = {
-  set heading(numbering: "A", supplement: [Appendix])
+  pagebreak();
+  heading(level: 1)[Appendix];
+  set heading(
+    level: 2,
+    numbering: (..nums) => numbering("A", nums.at(1)),
+    supplement: [Appendix]
+  );
   counter(heading).update(0)
   body
 }
