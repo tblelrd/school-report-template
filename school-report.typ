@@ -75,7 +75,7 @@
   tests: (),
 ) = figure(
   kind: "test-table",
-  supplement: "Table",
+  supplement: "Test Matrix",
   numbering: "1",
   caption: title,
 )[
